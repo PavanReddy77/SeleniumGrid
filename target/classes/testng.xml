@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Selenium Grid Parallel Suite" parallel="classes" thread-count="4">
+	<test name="Selenium Grid Parallel Tests">
+		<classes>
+			<class name="com.Grid.Tests.ChromeTest1"/>
+			<class name="com.Grid.Tests.ChromeTest2"/>
+			<class name="com.Grid.Tests.FirefoxTest1"/>
+			<class name="com.Grid.Tests.FirefoxTest2"/>
+		</classes>
+	</test>
+</suite>

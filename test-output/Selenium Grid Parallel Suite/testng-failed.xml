@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="4" guice-stage="DEVELOPMENT" name="Failed suite [Selenium Grid Parallel Suite]" parallel="classes">
+  <test name="Selenium Grid Parallel Tests(failed)" parallel="classes">
+    <classes>
+      <class name="com.Grid.Tests.ChromeTest2">
+        <methods>
+          <include name="chromeTest2"/>
+        </methods>
+      </class> <!-- com.Grid.Tests.ChromeTest2 -->
+      <class name="com.Grid.Tests.ChromeTest1">
+        <methods>
+          <include name="chromeTest1"/>
+        </methods>
+      </class> <!-- com.Grid.Tests.ChromeTest1 -->
+      <class name="com.Grid.Tests.FirefoxTest1">
+        <methods>
+          <include name="firefoxTest1"/>
+        </methods>
+      </class> <!-- com.Grid.Tests.FirefoxTest1 -->
+      <class name="com.Grid.Tests.FirefoxTest2">
+        <methods>
+          <include name="firefoxTest2"/>
+        </methods>
+      </class> <!-- com.Grid.Tests.FirefoxTest2 -->
+    </classes>
+  </test> <!-- Selenium Grid Parallel Tests(failed) -->
+</suite> <!-- Failed suite [Selenium Grid Parallel Suite] -->
