@@ -1,4 +1,4 @@
-package com.Grid.Tests;
+package com.Grid.BaseClass;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -9,17 +9,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.Test;
 
-public class FirefoxTest2 
+public class TestBase 
 {
-	public static WebDriver driver;
+	public WebDriver driver;
+	public static ThreadLocal<WebDriver> tdriver = new ThreadLocal<WebDriver>();
 	
-	@Test
-	public void firefoxTest2() throws MalformedURLException
-	{		
+	public WebDriver initializeDriver() throws MalformedURLException 
+	{
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setBrowserName("firefox");
+		capabilities.setBrowserName("chrome");
 		capabilities.setPlatform(Platform.WINDOWS);
 		
 		ChromeOptions chromeOptions = new ChromeOptions();
@@ -34,11 +33,12 @@ public class FirefoxTest2
 		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
-		driver.get("https://www.amazon.com");
-		
-		String title = driver.getTitle();
-		System.out.println("The FirefoxTest_2 Amazon Title is ::: " +title);
-		
-		driver.quit();
+		tdriver.set(driver);
+		return getDriver();
 	}
-} 
+	
+	public static synchronized WebDriver getDriver() 
+	{
+		return tdriver.get();
+	}
+}
